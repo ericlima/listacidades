@@ -7,15 +7,15 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 
-const protocolo = "http";
-const servidor =  "localhost";
-const porta = "4040";
-const urlbase = protocolo + "://" + servidor + ":" + porta;
-const urlCidadesCombo: string = urlbase + "/cidades/combo/";
-const urlUfsCombo: string = urlbase + "/ufs/combo/";
-const urlCidades: string = urlbase + "/cidades/";
-const urlPaginas: string = urlbase + "/cidades/paginas";
-const urlCidade: string = urlbase + "/cidade/";
+const protocolo = 'http';
+const servidor =  'localhost';
+const porta = '4040';
+const urlbase = protocolo + '://' + servidor + ':' + porta;
+const urlCidadesCombo: string = urlbase + '/cidades/combo/';
+const urlUfsCombo: string = urlbase + '/ufs/combo/';
+const urlCidades: string = urlbase + '/cidades/';
+const urlPaginas: string = urlbase + '/cidades/paginas';
+const urlCidade: string = urlbase + '/cidade/';
 
 @Injectable()
 export class CidadeService {
@@ -27,7 +27,7 @@ export class CidadeService {
       .map(res => res.json());
   }
 
-  obtemCidadesCombo(uf:string) {
+  obtemCidadesCombo(uf: string) {
     return this.getServer(urlCidadesCombo.concat(uf));
   }
 
@@ -35,11 +35,11 @@ export class CidadeService {
     return this.getServer(urlUfsCombo);
   }
 
-  obtemCidade(id:number) {
+  obtemCidade(id: number) {
     return this.getServer(urlCidade.concat(id.toString()));
   }
 
-  obtemCidades(pagina:number) {
+  obtemCidades(pagina: number) {
     return this.getServer(urlCidades.concat(pagina.toString()));
   }
 
