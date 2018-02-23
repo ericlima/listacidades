@@ -12,14 +12,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class CidadesComponent implements OnInit {
 
-  cidade = {};
+  cidade = {'id': 0, 'codigo': '', 'nome': '', 'uf': ''};
   cidades: any[] = [];
   cidadesCombo = [];
   ufsCombo: any[] = [];
-  selectedUf: string = "SP";
-  selectedIdMunicipio: number = 1;
+  selectedUf = 'SP';
+  selectedIdMunicipio = 1;
   qtdPaginas = 0;
-  paginacao = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+  paginacao: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
   paginacaoOffset = 0;
 
   constructor(
@@ -41,11 +41,11 @@ export class CidadesComponent implements OnInit {
   }
 
   carga() {
-    this.paginado(0); 
+    this.paginado(0);
   }
 
   contaPaginas() {
-    this.service.contaPaginas().subscribe(res => this.qtdPaginas = parseInt(res));
+    this.service.contaPaginas().subscribe(res => this.qtdPaginas = parseInt(res, 10));
   }
 
   paginado(pagina: number) {
@@ -58,8 +58,9 @@ export class CidadesComponent implements OnInit {
 
   proximo() {
     this.paginacaoOffset = this.paginacaoOffset + 20;
-    for (let num in this.paginacao) {
-      this.paginacao[num] = this.paginacaoOffset + parseInt(num);
+
+    for (const num of this.paginacao) {
+      this.paginacao[num] = this.paginacaoOffset + num;
     }
     this.paginado(this.paginacao[0]);
     console.log(this.paginacaoOffset);
@@ -68,8 +69,8 @@ export class CidadesComponent implements OnInit {
   anterior() {
     if (this.paginacaoOffset > 0) {
       this.paginacaoOffset = this.paginacaoOffset - 20;
-      for (let num in this.paginacao) {
-        this.paginacao[num] = this.paginacaoOffset + parseInt(num);
+      for (const num of this.paginacao) {
+        this.paginacao[num] = this.paginacaoOffset + num;
       }
       this.paginado(this.paginacao[0]);
     }

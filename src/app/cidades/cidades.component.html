@@ -11,7 +11,7 @@
                 <select class="custom-select custom-select-lg mb-3" [(ngModel)]="selectedUf" (change)="onChangeUf()" >
                     <option *ngFor="let u of ufsCombo" [value]="u.uf">{{u.uf}}</option>
                 </select>
-                <select class="custom-select custom-select-lg mb-3" [(ngModel)]="selectedIdMunicipio" (change)="onChangeMunicipio()"> 
+                <select class="custom-select custom-select-lg mb-3" [(ngModel)]="selectedIdMunicipio" (change)="onChangeMunicipio()">
                     <option *ngFor="let c of cidadesCombo" [value]="c.id">{{c.nome}}</option>
                 </select>
         </div>

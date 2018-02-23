@@ -7,7 +7,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 
 // tslint:disable-next-line:import-blacklist
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 
 const protocolo = 'http';
 const servidor =  'localhost';
